@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@layer utilities {
+  /* --- 1. THE MOVING STARFIELD --- */
+  @keyframes move-stars {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-1000px); }
+  }
+
+  @keyframes star-twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+
+  .iloilo-bg {
+    background: #000;
+    background-image: 
+      radial-gradient(1.5px 1.5px at 20px 30px, #fff, transparent),
+      radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+      radial-gradient(1.5px 1.5px at 80px 120px, #fff, transparent),
+      radial-gradient(2px 2px at 140px 40px, #fff, transparent);
+    background-size: 200px 200px;
+    animation: move-stars 180s linear infinite, star-twinkle 5s ease-in-out infinite;
+  }
+
+  /* --- 2. LEAFLET POPUP STYLING (The Secret Note) --- */
+  
+  .custom-popup .leaflet-popup-content-wrapper {
+    background: #ffffff !important;
+    border-radius: 24px !important;
+    padding: 10px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .custom-popup .leaflet-popup-tip {
+    background: #ffffff !important;
+  }
+
+  /* Target the specific Serif font for the confession */
+  .custom-popup p {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: #1a1a1a !important;
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+
+  /* --- 3. THE GLOWING PIN --- */
+  
+  .custom-whisper-pin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .whisper-dot {
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px #fff, 0 0 30px rgba(255, 255, 255, 0.4);
+    animation: pulse-dot 2.5s infinite ease-in-out;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.6); opacity: 0.6; box-shadow: 0 0 25px #fff; }
+  }
+
+  /* --- 4. SIDEBAR & INBOX --- */
+
+  /* Nice fade-in for new private messages */
+  .slide-in-from-right {
+    animation: slideRight 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes slideRight {
+    from { transform: translateX(30px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  /* Custom Scrollbar for the Private Echoes sidebar */
+  .overflow-y-auto::-webkit-scrollbar {
+    width: 3px;
+  }
+  .overflow-y-auto::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .overflow-y-auto::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+
+  /* --- 5. UTILITIES --- */
+
+  .leaflet-container {
+    background: #000 !important;
+    outline: none;
+  }
+
+  /* Removes the default blue outline on Leaflet markers */
+  .leaflet-marker-icon:focus {
+    outline: none !important;
+  }
+}
