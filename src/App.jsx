@@ -315,7 +315,12 @@ function App() {
         <div className="relative z-10 flex flex-col min-h-screen">
           <nav className="p-4 bg-black/40 backdrop-blur-xl border-b border-white/5 flex justify-between items-center sticky top-0 z-[1000]">
             <h1 className="text-2xl font-black tracking-tighter">HUTIK</h1>
-            <button onClick={() => supabase.auth.signOut()} className="text-red-500 text-xs font-black uppercase tracking-widest cursor-pointer">Logout</button>
+            <button 
+              onClick={() => supabase.auth.signOut()} 
+              className="px-4 py-2 bg-red-500/20 hover:bg-red-500/40 border border-red-500/50 hover:border-red-500 rounded-lg text-white font-black uppercase tracking-widest cursor-pointer transition-all duration-200 active:scale-95"
+            >
+              Logout
+            </button>
           </nav>
 
           <main className="max-w-7xl mx-auto w-full p-6 grid grid-cols-1 lg:grid-cols-4 gap-8">
